@@ -1,0 +1,52 @@
+---
+
+---
+
+<div class="text-5xl flex gap-3 justify-center">
+  <div class="[&_span]:font-bold">
+    <span id="days">0</span>d
+  </div>
+  <div class="[&_span]:font-bold">
+    <span id="hours">0</span>h
+  </div>
+  <div class="[&_span]:font-bold">
+    <span id="minutes">0</span>m
+  </div>
+  <div class="[&_span]:font-bold">
+    <span id="seconds">0</span>s
+  </div>
+</div>
+
+<button class="bg-gray-500 rounded-full px-2 font-mono text-xs">
+    days</button>
+<button class="font-mono text-xs">seconds</button>
+<button class="font-mono text-xs">binary</button>
+
+<script>
+  const updateCountdown = () => {
+    const int32max = 2147483647
+    if (!document) return
+
+    const now = new Date().getTime();
+    const distance = int32max * 1000 - now;
+
+    if (distance < 0) {
+      clearInterval(countdownInterval);
+      document.getElementById('countdown').innerHTML = "<p>Countdown complete!</p>";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').innerText = days;
+    document.getElementById('hours').innerText = hours;
+    document.getElementById('minutes').innerText = minutes;
+    document.getElementById('seconds').innerText = seconds;
+  };
+
+  const countdownInterval = setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
