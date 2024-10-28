@@ -32,7 +32,8 @@
 
     if (distance < 0) {
       clearInterval(countdownInterval);
-      document.getElementById('countdown').innerHTML = "<p>Countdown complete!</p>";
+      const countdownElement = document.getElementById('countdown')
+      if (countdownElement) countdownElement.innerHTML = "<p>Countdown complete!</p>";
       return;
     }
 
@@ -41,10 +42,14 @@
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById('days').innerText = days;
-    document.getElementById('hours').innerText = hours;
-    document.getElementById('minutes').innerText = minutes;
-    document.getElementById('seconds').innerText = seconds;
+    const daysElement = document.getElementById('days');
+    if (daysElement) daysElement.innerText = days.toString();
+    const hoursElement = document.getElementById('hours');
+    if (hoursElement) hoursElement.innerText = hours.toString();
+    const minutesElement = document.getElementById('minutes');
+    if (minutesElement) minutesElement.innerText = minutes.toString();
+    const secondsElement = document.getElementById('seconds');
+    if (secondsElement) secondsElement.innerText = seconds.toString();
   };
 
   const countdownInterval = setInterval(updateCountdown, 1000);
