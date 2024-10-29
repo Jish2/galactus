@@ -16,3 +16,4 @@ the all knowing api
 - migration guide
 - multiple integrations (rest, gRPC, sdk)
 - sdks... in every language
+- universeendpoint is an example app "built with galactus" and galactus is the service
