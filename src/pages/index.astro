@@ -1,25 +1,32 @@
 ---
-import Countdown from '../Countdown.astro';
-import Galaxy from '../Galaxy.astro';
-import Layout from '../layouts/Layout.astro';
+import Countdown from "../Countdown.astro";
+import Galaxy from "../Galaxy.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="The world is ending in ">
-	<main class="w-[800px] max-w-[calc(100%_-_2rem)] text-white text-xl leading-[1.6] m-auto p-4 text-center">
-		
-		<img src="./galactus-figure-refined.png" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 h-[70vh]" />
-		
-		<Countdown />
-		
-		<p class="font-mono">
-			join <a href="https://en.wikipedia.org/wiki/Galactus" class="font-bold">galactus</a> as he slowly waits until the end of the universe
-		</p>
-	
-		
-		<Galaxy />
+  <main
+    class="w-[800px] max-w-[calc(100%_-_2rem)] text-white text-xl leading-[1.6] m-auto p-4 text-center"
+  >
+    <img
+      src="./galactus-figure-refined.png"
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 h-[70vh]"
+    />
 
-	</main>
-	<footer>
-		<a class="text-white font-mono text-xs" href="https://youtu.be/y8OnoxKotPQ?si=QxwIHoibBapzipPX&t=54">backstory</a>
-	</footer>
+    <Countdown />
+
+    <p class="font-mono">
+      join <a href="https://en.wikipedia.org/wiki/Galactus" class="font-bold"
+        >galactus</a
+      > as he slowly waits until the end of the universe
+    </p>
+
+    <Galaxy />
+  </main>
+  <footer>
+    <a
+      class="text-white font-mono text-xs"
+      href="https://youtu.be/y8OnoxKotPQ?si=QxwIHoibBapzipPX&t=54">backstory</a
+    >
+  </footer>
 </Layout>

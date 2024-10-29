@@ -1,92 +1,90 @@
-<canvas id="starfield" class="absolute w-screen h-screen -z-20 left-0 top-0"></canvas>
+<canvas id="starfield" class="absolute w-screen h-screen -z-20 left-0 top-0"
+></canvas>
 
 <script>
-    const canvas = document.getElementById('starfield');
-    const ctx = canvas.getContext('2d');
+  const canvas = document.getElementById("starfield");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const stars = [];
+  const numStars = 500;
+  const speed = 0.5;
+
+  var multiplier = 1.1;
+  const minspeed = 1.005;
+
+  class Star {
+    constructor() {
+      this.reset();
+    }
+
+    reset() {
+      this.x = (Math.random() - 0.5) * canvas.width;
+      this.y = (Math.random() - 0.5) * canvas.height;
+      this.z = Math.random() * canvas.width;
+      this.prevX = this.x;
+      this.prevY = this.y;
+    }
+
+    update() {
+      this.prevX = this.x;
+      this.prevY = this.y;
+
+      this.z -= speed;
+
+      if (this.x > canvas.width || this.y > canvas.height) {
+        this.reset();
+      }
+
+      if (this.z <= 700) {
+        this.reset();
+      }
+
+      this.x = this.x * multiplier;
+      this.y = this.y * multiplier;
+    }
+
+    draw() {
+      const x = this.x + canvas.width / 2;
+      const y = this.y + canvas.height / 2;
+      const prevX = this.prevX + canvas.width / 2;
+      const prevY = this.prevY + canvas.height / 2;
+
+      ctx.beginPath();
+      ctx.moveTo(prevX, prevY);
+      ctx.lineTo(x, y);
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
+
+  for (let i = 0; i < numStars; i++) {
+    stars.push(new Star());
+  }
+
+  function animate() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    stars.forEach((star) => {
+      star.update();
+      star.draw();
+    });
+
+    if (multiplier > minspeed) {
+      console.log(multiplier, minspeed);
+      multiplier -= 0.0014;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
-    const stars = [];
-    const numStars = 500;
-    const speed = 0.5;
-
-    var multiplier = 1.1;
-    const minspeed = 1.005;
-    
-    class Star {
-        constructor() {
-            this.reset();
-        }
-
-        reset() {
-            this.x = (Math.random() - 0.5) * canvas.width;
-            this.y = (Math.random() - 0.5) * canvas.height;
-            this.z = Math.random() * canvas.width;
-            this.prevX = this.x;
-            this.prevY = this.y;
-        }
-
-        update() {
-            this.prevX = this.x;
-            this.prevY = this.y;
-
-            this.z -= speed;
-
-            if (this.x > canvas.width || this.y > canvas.height){
-                this.reset();
-            }
-
-            if (this.z <= 700) {
-                this.reset();
-            }
-
-            this.x = this.x * multiplier;
-            this.y = this.y * multiplier;
-        }
-
-        draw() {
-            const x = this.x + canvas.width / 2;
-            const y = this.y + canvas.height / 2;
-            const prevX = this.prevX + canvas.width / 2;
-            const prevY = this.prevY + canvas.height / 2;
-
-            ctx.beginPath();
-            ctx.moveTo(prevX, prevY);
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = "white";
-            ctx.lineWidth = 1;
-            ctx.stroke();
-        }
-
-    }
-
-    for (let i = 0; i < numStars; i++) {
-        stars.push(new Star());
-    }
-
-    function animate() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        stars.forEach(star => {
-        star.update();
-        star.draw();
-        });
-
-        if (multiplier > minspeed){
-        console.log(multiplier, minspeed)
-        multiplier -= 0.0014;
-        }
-
-
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+  });
 </script>
