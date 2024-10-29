@@ -12,3 +12,4 @@ the all knowing api
 - managed service with api keys etc
 - extensive changelogs
 - marketing page / pricing plans
+- multiple api versions
