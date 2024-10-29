@@ -13,3 +13,4 @@ the all knowing api
 - extensive changelogs
 - marketing page / pricing plans
 - multiple api versions
+- migration guide
