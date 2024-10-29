@@ -2,7 +2,11 @@
 
 ---
 
-<div class="text-5xl flex gap-3 justify-center font-mono">
+<button class="bg-gray-500 rounded-full px-2 font-mono text-xs"> days</button>
+<button class="font-mono text-xs">seconds</button>
+<button class="font-mono text-xs">binary</button>
+
+<div class="text-5xl flex gap-3 justify-center font-mono mb-3">
   <div class="[&_span]:font-semibold">
     <span id="days">0</span>d
   </div>
@@ -16,10 +20,6 @@
     <span id="seconds">0</span>s
   </div>
 </div>
-
-<button class="bg-gray-500 rounded-full px-2 font-mono text-xs"> days</button>
-<button class="font-mono text-xs">seconds</button>
-<button class="font-mono text-xs">binary</button>
 
 <script>
   const updateCountdown = () => {
@@ -39,7 +39,7 @@
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
