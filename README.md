@@ -14,3 +14,5 @@ the all knowing api
 - marketing page / pricing plans
 - multiple api versions
 - migration guide
+- multiple integrations (rest, gRPC, sdk)
+- sdks... in every language
